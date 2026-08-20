@@ -4,9 +4,14 @@ import { ContactForm } from "@/components/contact-form";
 import { SiteHeader } from "@/components/site-header";
 
 const partners = [
-    { src: "/images/partners/jayu.webp", alt: "JAYU" },
-    { src: "/images/partners/university-of-toronto.svg", alt: "University of Toronto" },
-    { src: "/images/partners/wework.svg", alt: "WeWork" },
+    { src: "/images/partners/jayu.webp", alt: "JAYU", width: 1500, height: 982 },
+    {
+        src: "/images/partners/university-of-toronto.svg",
+        alt: "University of Toronto",
+        width: 429,
+        height: 159,
+    },
+    { src: "/images/partners/wework.svg", alt: "WeWork", width: 804, height: 161 },
 ];
 
 export default function Home() {
@@ -127,8 +132,9 @@ export default function Home() {
                                     key={partner.alt}
                                     src={partner.src}
                                     alt={partner.alt}
-                                    width={220}
-                                    height={70}
+                                    width={partner.width}
+                                    height={partner.height}
+                                    style={{ width: "auto", height: "auto" }}
                                 />
                             ))}
                         </div>

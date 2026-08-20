@@ -167,7 +167,7 @@ textarea {
     min-width: 0;
 }
 .hero-copy {
-    padding-left: clamp(0rem, 5vw, 5rem);
+    padding-left: clamp(0rem, 2vw, 2.5rem);
 }
 .eyebrow {
     display: inline-block;
@@ -291,8 +291,10 @@ textarea {
 }
 .partner-list img {
     object-fit: contain;
+    width: auto;
+    height: auto;
+    max-width: min(220px, 25vw);
     max-height: 70px;
-    width: min(220px, 25vw);
 }
 .method-grid {
     grid-template-columns: 1fr 1.2fr;
@@ -321,11 +323,15 @@ textarea {
 }
 .contact-copy .display-title {
     font-size: clamp(3.35rem, 5.4vw, 5.25rem);
+    line-height: 1;
     word-spacing: 0.04em;
 }
 .contact-copy .display-title span {
     display: block;
     white-space: nowrap;
+}
+.contact-copy .display-title span + span {
+    margin-top: 0.12em;
 }
 .contact-loop {
     position: absolute;
@@ -422,6 +428,55 @@ footer {
 }
 footer p {
     margin: 0;
+}
+
+@media (min-width: 1440px) {
+    .hero {
+        align-items: start;
+        padding-top: clamp(5.75rem, 9vh, 7rem);
+    }
+    .hero-grid {
+        width: min(100%, 1540px);
+        grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+        gap: clamp(3.5rem, 5vw, 6rem);
+    }
+    .hero-art {
+        min-height: min(43vw, 700px);
+    }
+    .hero-photo {
+        left: 8%;
+        width: min(84%, 590px);
+    }
+    .hero-copy .display-title {
+        font-size: clamp(7.5rem, 6.7vw, 8.25rem);
+        line-height: 1;
+        word-spacing: 0.11em;
+    }
+    .hero-copy .eyebrow {
+        margin-bottom: 3.75rem;
+    }
+    .hero-copy .lede {
+        max-width: 38rem;
+        margin: 4rem 0 3rem;
+    }
+    .hero-copy .button {
+        min-height: 4.5rem;
+        padding-inline: 1.75rem;
+        font-size: 1.12rem;
+    }
+    .events-copy .display-title {
+        font-size: clamp(7.75rem, 7vw, 8.6rem);
+        line-height: 0.94;
+    }
+    .method-copy .display-title {
+        max-width: 820px;
+        font-size: clamp(7.6rem, 6.7vw, 8.4rem);
+        line-height: 0.94;
+    }
+    .contact-copy .display-title {
+        font-size: clamp(5.1rem, 4.6vw, 5.75rem);
+        line-height: 1.03;
+    }
 }
 
 @media (max-width: 1180px) and (min-width: 901px) {
@@ -570,7 +625,9 @@ footer p {
         grid-row: auto;
     }
     .partner-list img {
-        width: min(180px, 38vw);
+        width: auto;
+        height: auto;
+        max-width: min(180px, 38vw);
     }
     .method-art {
         order: 2;
