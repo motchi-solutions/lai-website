@@ -1,7 +1,7 @@
-:root { --ink: #06122f; --blue: #12358d; --pale-blue: #a8c9eb; --paper: #faf8f5; --mist: #edf5fc; --wine: #6e0d1d; }
+:root { --ink: #06122f; --blue: #12358d; --pale-blue: #a8c9eb; --paper: #faf8f5; --mist: #edf5fc; --wine: #6e0d1d; --font-display: "pritzious", cursive; --font-body: "asterisk-sans-variable", Arial, sans-serif; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 8rem; }
-body { margin: 0; overflow-x: clip; background: var(--paper); color: var(--ink); font-family: var(--font-body), Arial, sans-serif; font-size: 18px; line-height: 1.5; }
+body { margin: 0; overflow-x: clip; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 18px; font-variation-settings: "wght" 400; line-height: 1.5; }
 a { color: inherit; }
 img { max-width: 100%; }
 button, input, textarea { font: inherit; }
@@ -24,7 +24,7 @@ button, input, textarea { font: inherit; }
 .hero-copy, .events-copy, .method-copy, .contact-copy { min-width: 0; }
 .hero-copy { padding-left: clamp(0rem, 5vw, 5rem); }
 .eyebrow { display: inline-block; border: 2px solid var(--ink); border-radius: 1rem; padding: .55rem 1rem; margin: 0 0 2.5rem; text-transform: uppercase; font-size: .88rem; letter-spacing: .08em; }
-.display-title { color: var(--blue); font-family: "Snell Roundhand", "Segoe Script", cursive; font-size: clamp(3.9rem, 5.6vw, 6.3rem); font-weight: 400; font-style: italic; line-height: .94; letter-spacing: -.035em; margin: 0; }
+.display-title { color: var(--blue); font-family: var(--font-display); font-size: clamp(4.5rem, 6.6vw, 6.6rem); font-weight: 400; font-style: normal; line-height: .8; letter-spacing: 0; margin: 0; }
 .lede { max-width: 32rem; font-size: clamp(1.08rem, 1.45vw, 1.35rem); line-height: 1.45; margin: 2.25rem 0; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 3.5rem; padding: .8rem 1.25rem; background: var(--ink); border: 2px solid var(--ink); border-radius: 1rem; color: white; cursor: pointer; text-decoration: none; text-transform: capitalize; transition: transform .2s ease, background .2s ease, color .2s ease; }
 .button:hover { background: transparent; color: var(--ink); transform: translateY(-2px); }
@@ -37,9 +37,9 @@ button, input, textarea { font: inherit; }
 .event-gallery figure { position: relative; overflow: hidden; margin: 0; min-height: 0; }
 .event-gallery img { object-fit: cover; }
 .gallery-large { grid-row: span 2; }
-.events-copy .display-title { font-size: clamp(4rem, 5.9vw, 6.5rem); }
+.events-copy .display-title { font-size: clamp(5rem, 7.2vw, 7.3rem); }
 .partners { padding-top: 4rem; text-align: center; }
-.partners h3 { color: var(--blue); font-size: clamp(1.8rem, 3vw, 3rem); margin: 0 0 2rem; }
+.partners h3 { color: var(--blue); font-size: clamp(1.8rem, 3vw, 3rem); font-variation-settings: "wght" 600; margin: 0 0 2rem; }
 .partner-list { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: clamp(2rem, 7vw, 7rem); }
 .partner-list img { object-fit: contain; max-height: 70px; width: min(220px, 25vw); }
 .method-grid { grid-template-columns: 1fr 1.2fr; }
@@ -48,7 +48,7 @@ button, input, textarea { font: inherit; }
 .contact { align-items: start; }
 .contact-grid { align-items: start; }
 .contact-copy { position: relative; min-height: 600px; }
-.contact-copy .display-title { font-size: clamp(3.8rem, 5.3vw, 6rem); position: relative; z-index: 2; }
+.contact-copy .display-title { font-size: clamp(4.25rem, 6vw, 6.2rem); position: relative; z-index: 2; }
 .contact-loop { position: absolute; z-index: 1; left: 0; bottom: -5rem; width: 82%; height: auto; opacity: .95; }
 .contact-form { display: grid; gap: 1rem; }
 .contact-form > p { margin: 0 0 .4rem; color: #34405a; }
@@ -84,7 +84,7 @@ footer p { margin: 0; }
   .mobile-navigation a span { color: #6799cf; font-size: .78rem; letter-spacing: .08em; }
   .section { min-height: auto; padding-block: 4rem; }
   .hero-grid, .events-grid, .method-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .display-title, .events-copy .display-title, .contact-copy .display-title { font-size: clamp(3.5rem, 15vw, 5.4rem); }
+  .display-title, .events-copy .display-title, .contact-copy .display-title { font-size: clamp(4rem, 17vw, 6rem); }
   .hero-copy { width: 100%; padding-left: 0; }
   .eyebrow { margin-bottom: 2rem; }
   .hero-art { min-height: min(110vw, 570px); }
@@ -101,7 +101,7 @@ footer p { margin: 0; }
 }
 
 @media (max-width: 460px) {
-  .display-title, .events-copy .display-title, .contact-copy .display-title { font-size: clamp(3.15rem, 14.5vw, 4.2rem); }
+  .display-title, .events-copy .display-title, .contact-copy .display-title { font-size: clamp(3.75rem, 18vw, 5rem); }
   .lede { margin-block: 2rem; }
   .event-gallery { grid-template-rows: 280px 160px; }
   .contact-copy { min-height: 400px; }

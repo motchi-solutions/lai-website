@@ -25,7 +25,7 @@ export default function Home() {
             </div>
             <div className="hero-art" aria-hidden="true">
               <Image className="hero-photo" src="/images/hero-drinks.png" alt="" width={480} height={480} priority sizes="(max-width: 800px) 82vw, 38vw" />
-              <Image className="hero-loop" src="/images/textures/hero-loop.png" alt="" width={740} height={517} sizes="(max-width: 800px) 92vw, 48vw" />
+              <Image className="hero-loop" src="/images/textures/hero-loop.png" alt="" width={740} height={517} loading="eager" sizes="(max-width: 900px) 92vw, 48vw" />
             </div>
           </div>
         </section>
@@ -37,7 +37,7 @@ export default function Home() {
               <p className="lede">From corporate to community events, our custom menus make refreshment simple and delicious.</p>
             </div>
             <div className="event-gallery" aria-label="A selection of Lai catered events">
-              <figure className="gallery-large"><Image src="/images/showcase/event-table.jpg" alt="Matcha and fruit tea served beside flowers at an event" fill sizes="(max-width: 800px) 100vw, 35vw" /></figure>
+              <figure className="gallery-large"><Image src="/images/showcase/event-table.jpg" alt="Matcha and fruit tea served beside flowers at an event" fill loading="eager" sizes="(max-width: 900px) 100vw, 35vw" /></figure>
               <figure><Image src="/images/showcase/refreshers.png" alt="Two colourful iced refreshers" fill sizes="(max-width: 800px) 50vw, 23vw" /></figure>
               <figure><Image src="/images/showcase/event-service.jpg" alt="A barista preparing drinks at an event" fill sizes="(max-width: 800px) 50vw, 23vw" /></figure>
             </div>
@@ -52,7 +52,7 @@ export default function Home() {
 
         <section className="section method" id="method" aria-labelledby="method-title">
           <div className="section-inner method-grid">
-            <Image className="method-art" src="/images/method-drinks.png" alt="Three original Lai drinks: matcha, a fruit refresher, and coffee" width={600} height={776} sizes="(max-width: 800px) 90vw, 44vw" />
+            <Image className="method-art" src="/images/method-drinks.png" alt="Three original Lai drinks: matcha, a fruit refresher, and coffee" width={600} height={776} loading="eager" sizes="(max-width: 900px) 90vw, 44vw" />
             <div className="method-copy">
               <h2 className="display-title" id="method-title">Original flavours your guests will notice.</h2>
               <p className="lede">Every drink on your menu is handcrafted with carefully chosen ingredients. It&apos;s all made fresh for your guests to enjoy.</p>
