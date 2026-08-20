@@ -1,13 +1,12 @@
 import Image from "next/image";
 
 import { ContactForm } from "./contact-form";
-import { AnimatedSection } from "./animated-section";
-import { section, sectionInner } from "./section-styles";
+import { section, sectionInner } from "../shared/section-styles";
 
 export function ContactSection() {
     return (
-        <AnimatedSection
-            className={`${section} relative items-start pb-0! lg:pb-24!`}
+        <section
+            className={`${section} relative items-start pb-0!`}
             id="contact"
             aria-labelledby="contact-title"
         >
@@ -26,15 +25,14 @@ export function ContactSection() {
                 <ContactForm />
             </div>
             <Image
-                className="relative z-1 mx-auto -mb-4 mt-16 h-auto w-full max-w-md opacity-95 lg:absolute lg:-bottom-6 lg:left-16 lg:m-0 lg:w-2/5 lg:max-w-xl"
+                className="relative z-1 mx-auto mt-16 h-auto w-full max-w-md opacity-95 lg:absolute lg:bottom-0 lg:left-16 lg:m-0 lg:w-2/5 lg:max-w-xl"
                 src="/images/textures/contact-loop.png"
                 alt=""
                 width={604}
                 height={568}
-                loading="eager"
                 sizes="(max-width: 900px) 90vw, 38vw"
                 aria-hidden="true"
             />
-        </AnimatedSection>
+        </section>
     );
 }

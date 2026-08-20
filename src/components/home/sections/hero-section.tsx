@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { AnimatedSection } from "./animated-section";
-import { button, displayTitle, lede, section, sectionInner } from "./section-styles";
+import { AnimatedSection } from "../shared/animated-section";
+import { button, displayTitle, lede, section, sectionInner } from "../shared/section-styles";
 
 export function HeroSection() {
     return (
@@ -18,8 +18,8 @@ export function HeroSection() {
                         catered to you.
                     </h1>
                     <p className={lede}>
-                        Elevate your event with a premium tea and coffee menu tailored to your theme
-                        and budget.
+                        Bring your event together with a fresh tea, matcha and coffee menu shaped
+                        around your guests, theme and budget.
                     </p>
                     <a className={button} href="#contact">
                         Tell us about your event

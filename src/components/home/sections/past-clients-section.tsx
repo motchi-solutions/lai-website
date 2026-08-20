@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { AnimatedSection } from "./animated-section";
-import { sectionInner } from "./section-styles";
+import { AnimatedSection } from "../shared/animated-section";
+import { sectionInner } from "../shared/section-styles";
 
 const partners = [
     { src: "/images/partners/jayu.webp", alt: "JAYU", width: 1500, height: 982 },
