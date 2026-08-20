@@ -448,12 +448,16 @@ footer p {
         width: min(84%, 590px);
     }
     .hero-copy .display-title {
-        font-size: clamp(7.5rem, 6.7vw, 8.25rem);
-        line-height: 1;
+        font-size: clamp(8.5rem, 7.4vw, 9.5rem);
+        line-height: 0.96;
         word-spacing: 0.11em;
     }
+    .hero-copy {
+        position: relative;
+        top: -2.5rem;
+    }
     .hero-copy .eyebrow {
-        margin-bottom: 3.75rem;
+        margin-bottom: 1.75rem;
     }
     .hero-copy .lede {
         max-width: 38rem;
@@ -465,13 +469,20 @@ footer p {
         font-size: 1.12rem;
     }
     .events-copy .display-title {
-        font-size: clamp(7.75rem, 7vw, 8.6rem);
-        line-height: 0.94;
+        font-size: clamp(8.25rem, 7.4vw, 9.25rem);
+        line-height: 0.93;
+    }
+    .events-grid {
+        grid-template-columns: minmax(570px, 1fr) minmax(0, 1.2fr);
     }
     .method-copy .display-title {
-        max-width: 820px;
-        font-size: clamp(7.6rem, 6.7vw, 8.4rem);
-        line-height: 0.94;
+        max-width: 900px;
+        font-size: clamp(8.25rem, 7.2vw, 9rem);
+        line-height: 0.93;
+    }
+    .method-grid {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
+        gap: clamp(3rem, 4vw, 5rem);
     }
     .contact-copy .display-title {
         font-size: clamp(5.1rem, 4.6vw, 5.75rem);
