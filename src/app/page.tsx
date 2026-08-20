@@ -64,7 +64,7 @@ export default function Home() {
           <div className="section-inner contact-grid">
             <div className="contact-copy">
               <h2 className="display-title" id="contact-title">Share your vision.<br />We&apos;ll handle the rest.</h2>
-              <Image className="contact-loop" src="/images/textures/contact-loop.png" alt="" width={604} height={568} aria-hidden="true" />
+              <Image className="contact-loop" src="/images/textures/contact-loop.png" alt="" width={604} height={568} loading="eager" sizes="(max-width: 900px) 90vw, 38vw" aria-hidden="true" />
             </div>
             <ContactForm />
           </div>
