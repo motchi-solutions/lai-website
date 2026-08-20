@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lai Catering
 
-## Getting Started
+A responsive, accessible event-catering website built with Next.js 16, React 19, and TypeScript. The first iteration implements the supplied Figma direction, a progressive-web-app shell, and a local form-submission preview.
 
-First, run the development server:
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). Before committing, run:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Structure
 
-## Learn More
+- `src/app` — App Router entry point, global styles, metadata, and PWA manifest
+- `src/components` — focused interactive and layout components
+- `public/images` — optimized source artwork and photography supplied by Lai
+- `public/sw.js` — small network-first offline shell
 
-To learn more about Next.js, take a look at the following resources:
+## Form implementation status
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Iteration one keeps submitted form values in ephemeral React state and displays them beneath the form. It does not send, persist, log, or share data.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The next iteration should add a server-only route or Server Action that validates and normalizes the request, verifies reCAPTCHA v3 with a v2 challenge fallback, applies a durable IP/request-key rate limit, and writes through a restricted Google service account to the existing Sheet. Secrets must live in untracked environment variables without a `NEXT_PUBLIC_` prefix. The browser should receive only a generic success or error response.
 
-## Deploy on Vercel
+## Git workflow
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Create feature branches from `dev`, use focused conventional commits, and merge reviewed work into `dev`. Promote a verified release from `dev` to `main`. Never commit `.env*`, service-account JSON, API keys, tokens, or customer submissions.
