@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: "Lai Catering",
+        name: "Lai Project",
         short_name: "Lai",
         description: "Fresh, custom tea, matcha and coffee menus for events across the GTA.",
         id: "/",
