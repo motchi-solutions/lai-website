@@ -47,7 +47,7 @@ export default function Home() {
                                 width={480}
                                 height={480}
                                 priority
-                                sizes="(max-width: 800px) 82vw, 38vw"
+                                sizes="(max-width: 1024px) 72vw, 38vw"
                             />
                             <Image
                                 className="hero-loop"
@@ -56,7 +56,7 @@ export default function Home() {
                                 width={740}
                                 height={517}
                                 loading="eager"
-                                sizes="(max-width: 900px) 92vw, 48vw"
+                                sizes="(max-width: 1024px) 100vw, 48vw"
                             />
                         </div>
                     </div>

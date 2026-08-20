@@ -87,7 +87,7 @@ export function SiteHeader() {
                     width={1419}
                     height={1434}
                     priority
-                    sizes="(max-width: 900px) 72px, 96px"
+                    sizes="(max-width: 1024px) 56px, 80px"
                 />
             </a>
             <nav className="desktop-navigation" aria-label="Primary navigation">

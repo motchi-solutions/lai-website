@@ -7,13 +7,14 @@
     --wine: #6e0d1d;
     --font-display: "pritzious", cursive;
     --font-body: "asterisk-sans-variable", Arial, sans-serif;
+    --header-height: clamp(4.5rem, 5vw, 5.5rem);
 }
 * {
     box-sizing: border-box;
 }
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 4.25rem;
+    scroll-padding-top: calc(var(--header-height) + 0.25rem);
 }
 body {
     margin: 0;
@@ -55,7 +56,7 @@ textarea {
     transform: none;
 }
 .site-header {
-    height: 4rem;
+    height: var(--header-height);
     padding: 0 clamp(1.25rem, 4vw, 4rem);
     display: flex;
     align-items: center;
@@ -71,8 +72,8 @@ textarea {
 .wordmark {
     display: grid;
     place-items: center;
-    width: 58px;
-    height: 58px;
+    width: calc(var(--header-height) - 0.5rem);
+    height: calc(var(--header-height) - 0.5rem);
     padding: 4px;
     flex: 0 0 auto;
     text-decoration: none;
@@ -83,7 +84,7 @@ textarea {
     height: auto;
 }
 .desktop-navigation {
-    width: min(56vw, 1080px);
+    width: min(72vw, 1280px);
     margin-top: 0.15rem;
 }
 .desktop-navigation ul {
@@ -91,11 +92,12 @@ textarea {
     justify-content: space-between;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 0 0 0 60%;
     border-top: 1px solid #86b2df;
 }
 .desktop-navigation li {
-    width: 25%;
+    flex: 1 1 25%;
+    min-width: 0;
     text-align: center;
 }
 .desktop-navigation a {
@@ -143,7 +145,7 @@ textarea {
     display: none;
 }
 .section {
-    min-height: calc(100svh - 4rem);
+    min-height: calc(100svh - var(--header-height));
     padding: clamp(3.5rem, 6vw, 5.5rem) clamp(1.25rem, 4vw, 4rem);
     display: grid;
     align-items: center;
@@ -438,7 +440,7 @@ footer p {
 @media (min-width: 1440px) {
     .hero {
         align-items: start;
-        padding-top: clamp(5.75rem, 9vh, 7rem);
+        padding-top: clamp(4.5rem, 7vh, 6rem);
     }
     .hero-grid {
         width: min(100%, 1540px);
@@ -446,23 +448,33 @@ footer p {
         gap: clamp(3.5rem, 5vw, 6rem);
     }
     .hero-art {
-        min-height: min(43vw, 700px);
+        min-height: min(48vw, 850px);
     }
     .hero-photo {
-        left: 8%;
-        width: min(84%, 590px);
+        left: 50%;
+        width: min(38vw, 720px);
+        max-width: none;
+        transform: translateX(-50%);
+    }
+    .hero-loop {
+        left: 50%;
+        bottom: -16%;
+        width: 150%;
+        max-width: none;
+        transform: translateX(-50%);
     }
     .hero-copy .display-title {
-        font-size: clamp(8.5rem, 7.4vw, 9.5rem);
-        line-height: 0.96;
+        font-size: clamp(10rem, 8.8vw, 11.5rem);
+        line-height: 0.94;
         word-spacing: 0.11em;
+        white-space: nowrap;
     }
     .hero-copy .eyebrow {
-        margin-bottom: 1.75rem;
+        margin-bottom: 3.5rem;
     }
     .hero-copy .lede {
         max-width: 38rem;
-        margin: 4rem 0 3rem;
+        margin: 3.5rem 0 3rem;
     }
     .hero-copy .button {
         min-height: 4.5rem;
@@ -470,7 +482,7 @@ footer p {
         font-size: 1.12rem;
     }
     .events-copy .display-title {
-        font-size: clamp(8.25rem, 7.4vw, 9.25rem);
+        font-size: clamp(9.75rem, 8.3vw, 10.75rem);
         line-height: 0.93;
     }
     .events-grid {
@@ -478,7 +490,7 @@ footer p {
     }
     .method-copy .display-title {
         max-width: 900px;
-        font-size: clamp(8.25rem, 7.2vw, 9rem);
+        font-size: clamp(9.75rem, 8.2vw, 10.75rem);
         line-height: 0.93;
     }
     .method-grid {
@@ -486,7 +498,7 @@ footer p {
         gap: clamp(3rem, 4vw, 5rem);
     }
     .contact-copy .display-title {
-        font-size: clamp(5.1rem, 4.6vw, 5.75rem);
+        font-size: clamp(6.5rem, 5.6vw, 7.25rem);
         line-height: 1.03;
     }
 }
@@ -510,6 +522,9 @@ footer p {
 }
 
 @media (max-width: 1024px) {
+    :root {
+        --header-height: 4rem;
+    }
     html {
         scroll-padding-top: 4.25rem;
     }
@@ -615,10 +630,20 @@ footer p {
         margin-bottom: 2rem;
     }
     .hero-art {
-        min-height: min(110vw, 570px);
+        min-height: min(125vw, 720px);
     }
     .hero-photo {
-        left: 17%;
+        left: 50%;
+        width: min(72vw, 620px);
+        max-width: none;
+        transform: translateX(-50%);
+    }
+    .hero-loop {
+        left: 50%;
+        bottom: 4%;
+        width: min(140%, 900px);
+        max-width: none;
+        transform: translateX(-50%);
     }
     .events-grid {
         display: flex;
@@ -652,7 +677,10 @@ footer p {
         min-height: 0;
     }
     .contact-copy .display-title {
-        font-size: clamp(2.6rem, 10.5vw, 3.4rem);
+        font-size: clamp(4.45rem, 18.8vw, 6.55rem);
+    }
+    .contact-copy .display-title span {
+        white-space: normal;
     }
     .contact-loop {
         left: 50%;
@@ -674,7 +702,7 @@ footer p {
         font-size: clamp(4.15rem, 19.8vw, 5.5rem);
     }
     .contact-copy .display-title {
-        font-size: clamp(2.6rem, 10.5vw, 3.4rem);
+        font-size: clamp(4.15rem, 19.8vw, 5.5rem);
     }
     .lede {
         margin-block: 2rem;
