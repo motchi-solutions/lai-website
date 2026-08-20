@@ -24,7 +24,7 @@ const eventImages = [
 export function EventsSection() {
     return (
         <AnimatedSection
-            className={`${section} block !pb-4 pt-16 sm:!pb-6 sm:pt-18 lg:!pb-8 lg:pt-24`}
+            className={`${section} block pb-4! pt-16 sm:pb-6! sm:pt-18 lg:pb-8! lg:pt-24`}
             id="events"
             aria-labelledby="events-title"
         >
