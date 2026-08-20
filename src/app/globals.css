@@ -103,7 +103,9 @@ textarea {
     margin-top: -7px;
     text-decoration: none;
     text-transform: capitalize;
-    transition: color 0.2s ease;
+    transition:
+        color 0.28s ease,
+        transform 0.28s ease;
 }
 .desktop-navigation a:hover {
     color: var(--ink);
@@ -117,6 +119,11 @@ textarea {
     border-radius: 50%;
     background: var(--paper);
     box-shadow: inset 0 0 0 3px var(--paper);
+    transition:
+        background-color 0.28s ease,
+        border-color 0.28s ease,
+        box-shadow 0.28s ease,
+        transform 0.28s ease;
 }
 .desktop-navigation a[aria-current="location"] {
     color: var(--ink);
@@ -124,6 +131,10 @@ textarea {
 .desktop-navigation a[aria-current="location"] span {
     border-color: var(--ink);
     background: var(--ink);
+    box-shadow:
+        inset 0 0 0 3px var(--paper),
+        0 0 0 3px rgba(6, 18, 47, 0.08);
+    transform: scale(1.12);
 }
 .menu-toggle,
 .mobile-navigation {
@@ -232,14 +243,15 @@ textarea {
     padding-top: 6rem;
 }
 .events-grid {
-    grid-template-columns: 0.72fr 1.4fr;
+    grid-template-columns: minmax(410px, 0.92fr) minmax(0, 1.35fr);
+    gap: clamp(2.5rem, 4vw, 5rem);
 }
 .event-gallery {
     background: var(--mist);
     padding: clamp(0.6rem, 1.2vw, 1.1rem);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(2, minmax(170px, 270px));
+    grid-template-rows: repeat(3, minmax(150px, 220px));
     gap: clamp(0.6rem, 1.2vw, 1.1rem);
 }
 .event-gallery figure {
@@ -255,7 +267,10 @@ textarea {
     grid-row: span 2;
 }
 .events-copy .display-title {
-    font-size: clamp(5.5rem, 8.2vw, 8.4rem);
+    font-size: clamp(5.5rem, 7.35vw, 7.9rem);
+    line-height: 0.91;
+    letter-spacing: 0.015em;
+    word-spacing: 0.1em;
 }
 .partners {
     padding-top: 4rem;
@@ -295,6 +310,7 @@ textarea {
     padding-bottom: 0;
 }
 .contact-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.2fr);
     align-items: start;
     position: relative;
     z-index: 2;
@@ -304,7 +320,7 @@ textarea {
     min-width: 0;
 }
 .contact-copy .display-title {
-    font-size: clamp(3rem, 4.9vw, 5rem);
+    font-size: clamp(3.35rem, 5.4vw, 5.25rem);
     word-spacing: 0.04em;
 }
 .contact-copy .display-title span {
@@ -315,7 +331,7 @@ textarea {
     position: absolute;
     z-index: 1;
     left: max(1.25rem, calc((100vw - 1420px) / 2 + 4rem));
-    bottom: -4rem;
+    bottom: -1.5rem;
     width: min(40vw, 604px);
     height: auto;
     opacity: 0.95;
@@ -408,6 +424,24 @@ footer p {
     margin: 0;
 }
 
+@media (max-width: 1180px) and (min-width: 901px) {
+    .events-grid {
+        grid-template-columns: minmax(360px, 0.9fr) minmax(0, 1.1fr);
+        align-items: start;
+        gap: clamp(2rem, 4vw, 3.5rem);
+    }
+    .events-copy .display-title {
+        font-size: clamp(5.15rem, 7.8vw, 6.1rem);
+    }
+    .event-gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, clamp(180px, 22vw, 250px));
+    }
+    .gallery-large {
+        grid-row: auto;
+    }
+}
+
 @media (max-width: 900px) {
     html {
         scroll-padding-top: 5.5rem;
@@ -474,6 +508,9 @@ footer p {
         color: #6799cf;
         text-decoration: none;
         font-size: 1.08rem;
+        transition:
+            color 0.24s ease,
+            transform 0.24s ease;
     }
     .mobile-navigation a span {
         color: #6799cf;
@@ -482,6 +519,7 @@ footer p {
     }
     .mobile-navigation a[aria-current="location"] {
         color: var(--ink);
+        transform: translateX(0.25rem);
     }
     .mobile-navigation a[aria-current="location"] span {
         color: var(--ink);
@@ -525,7 +563,7 @@ footer p {
     .event-gallery {
         width: calc(100% + 2.5rem);
         margin-inline: -1.25rem;
-        grid-template-rows: 330px 210px;
+        grid-template-rows: 330px repeat(2, 210px);
     }
     .gallery-large {
         grid-column: span 2;
@@ -545,16 +583,16 @@ footer p {
         min-height: 0;
     }
     .contact-copy .display-title {
-        font-size: clamp(2rem, 8vw, 2.75rem);
+        font-size: clamp(2.6rem, 10.5vw, 3.4rem);
     }
     .contact-loop {
         left: 50%;
-        bottom: -3rem;
+        bottom: -1rem;
         transform: translateX(-50%);
         width: min(100%, 480px);
     }
     .contact {
-        padding-bottom: min(125vw, 36rem);
+        padding-bottom: min(105vw, 30rem);
     }
     .contact-form .button {
         width: 100%;
@@ -567,16 +605,16 @@ footer p {
         font-size: clamp(4.15rem, 19.8vw, 5.5rem);
     }
     .contact-copy .display-title {
-        font-size: clamp(2rem, 8vw, 2.75rem);
+        font-size: clamp(2.6rem, 10.5vw, 3.4rem);
     }
     .lede {
         margin-block: 2rem;
     }
     .event-gallery {
-        grid-template-rows: 280px 160px;
+        grid-template-rows: 280px repeat(2, 160px);
     }
     .contact {
-        padding-bottom: min(135vw, 34rem);
+        padding-bottom: min(112vw, 28rem);
     }
 }
 

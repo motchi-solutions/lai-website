@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { Squash } from "hamburger-react";
 import Image from "next/image";
 
@@ -59,9 +59,18 @@ export function SiteHeader() {
         };
     }, []);
 
-    function handleNavigation(sectionId: string) {
+    function handleNavigation(event: MouseEvent<HTMLAnchorElement>, sectionId: string) {
+        event.preventDefault();
         setActiveSection(sectionId);
         setIsOpen(false);
+
+        document.getElementById(sectionId)?.scrollIntoView({
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+                ? "auto"
+                : "smooth",
+            block: "start",
+        });
+        window.history.replaceState(null, "", `#${sectionId}`);
     }
 
     return (
@@ -70,7 +79,7 @@ export function SiteHeader() {
                 className="wordmark"
                 href="#mission"
                 aria-label="Lai home"
-                onClick={() => handleNavigation("mission")}
+                onClick={(event) => handleNavigation(event, "mission")}
             >
                 <Image
                     src="/brand/lai-logo.png"
@@ -90,7 +99,7 @@ export function SiteHeader() {
                                 aria-current={
                                     activeSection === item.href.slice(1) ? "location" : undefined
                                 }
-                                onClick={() => handleNavigation(item.href.slice(1))}
+                                onClick={(event) => handleNavigation(event, item.href.slice(1))}
                             >
                                 <span aria-hidden="true" />
                                 {item.label}
@@ -122,7 +131,7 @@ export function SiteHeader() {
                                 aria-current={
                                     activeSection === item.href.slice(1) ? "location" : undefined
                                 }
-                                onClick={() => handleNavigation(item.href.slice(1))}
+                                onClick={(event) => handleNavigation(event, item.href.slice(1))}
                                 tabIndex={isOpen ? 0 : -1}
                             >
                                 <span>0{index + 1}</span>

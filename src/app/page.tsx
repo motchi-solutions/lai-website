@@ -78,33 +78,49 @@ export default function Home() {
                         >
                             <figure className="gallery-large">
                                 <Image
-                                    src="/images/showcase/event-table.jpg"
+                                    src="/images/showcase/event-feature.jpg"
                                     alt="Matcha and fruit tea served beside flowers at an event"
                                     fill
                                     loading="eager"
-                                    sizes="(max-width: 900px) 100vw, 35vw"
+                                    sizes="(max-width: 900px) 100vw, (max-width: 1180px) 45vw, 30vw"
                                 />
                             </figure>
                             <figure>
                                 <Image
-                                    src="/images/showcase/refreshers.png"
-                                    alt="Two colourful iced refreshers"
+                                    src="/images/showcase/event-coffee.jpg"
+                                    alt="Freshly brewed iced coffee at a catered event"
                                     fill
-                                    sizes="(max-width: 800px) 50vw, 23vw"
+                                    sizes="(max-width: 900px) 50vw, (max-width: 1180px) 45vw, 22vw"
                                 />
                             </figure>
                             <figure>
                                 <Image
-                                    src="/images/showcase/event-service.jpg"
+                                    src="/images/showcase/event-barista.jpg"
                                     alt="A barista preparing drinks at an event"
                                     fill
-                                    sizes="(max-width: 800px) 50vw, 23vw"
+                                    sizes="(max-width: 900px) 50vw, (max-width: 1180px) 45vw, 22vw"
+                                />
+                            </figure>
+                            <figure>
+                                <Image
+                                    src="/images/showcase/event-barista.jpg"
+                                    alt="A close view of barista service at a catered event"
+                                    fill
+                                    sizes="(max-width: 900px) 50vw, (max-width: 1180px) 45vw, 22vw"
+                                />
+                            </figure>
+                            <figure>
+                                <Image
+                                    src="/images/showcase/event-menu.jpg"
+                                    alt="A custom drink menu displayed at an event"
+                                    fill
+                                    sizes="(max-width: 900px) 50vw, (max-width: 1180px) 45vw, 22vw"
                                 />
                             </figure>
                         </div>
                     </div>
                     <div className="partners section-inner" aria-labelledby="partners-title">
-                        <h3 id="partners-title">Trusted by</h3>
+                        <h3 id="partners-title">Our Past Clients</h3>
                         <div className="partner-list">
                             {partners.map((partner) => (
                                 <Image
