@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { AnimatedSection } from "./animated-section";
-import { displayTitle, lede, section, sectionInner } from "./section-styles";
+import { AnimatedSection } from "../shared/animated-section";
+import { displayTitle, lede, section, sectionInner } from "../shared/section-styles";
 
 const eventImages = [
     {
@@ -15,8 +15,8 @@ const eventImages = [
     },
     { src: "/images/showcase/event-barista.jpg", alt: "A barista preparing drinks at an event" },
     {
-        src: "/images/showcase/event-barista.jpg",
-        alt: "A close view of barista service at a catered event",
+        src: "/images/showcase/event-service.jpg",
+        alt: "Lai drinks being served to guests at a catered event",
     },
     { src: "/images/showcase/event-menu.jpg", alt: "A custom drink menu displayed at an event" },
 ];
@@ -38,8 +38,8 @@ export function EventsSection() {
                         your plate.
                     </h2>
                     <p className={lede}>
-                        From corporate to community events, our custom menus make refreshment simple
-                        and delicious.
+                        From team gatherings and corporate events to community celebrations and
+                        private parties, we make serving memorable drinks feel simple.
                     </p>
                 </div>
                 <div

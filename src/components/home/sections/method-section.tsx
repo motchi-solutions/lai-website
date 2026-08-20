@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { AnimatedSection } from "./animated-section";
-import { displayTitle, lede, section, sectionInner } from "./section-styles";
+import { AnimatedSection } from "../shared/animated-section";
+import { displayTitle, lede, section, sectionInner } from "../shared/section-styles";
 
 export function MethodSection() {
     return (
@@ -15,7 +15,6 @@ export function MethodSection() {
                     alt="Three original Lai drinks: matcha, a fruit refresher, and coffee"
                     width={600}
                     height={776}
-                    loading="eager"
                     sizes="(max-width: 900px) 90vw, 44vw"
                 />
                 <div className="min-w-0 lg:order-2">
@@ -23,8 +22,8 @@ export function MethodSection() {
                         Original flavours your guests will notice.
                     </h2>
                     <p className={lede}>
-                        Every drink on your menu is handcrafted with carefully chosen ingredients.
-                        It&apos;s all made fresh for your guests to enjoy.
+                        Every menu is built for the occasion, then each drink is handcrafted with
+                        carefully chosen ingredients and made fresh for your guests.
                     </p>
                 </div>
             </div>

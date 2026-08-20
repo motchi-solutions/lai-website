@@ -1,8 +1,8 @@
-import { ContactSection } from "@/components/home/contact-section";
-import { EventsSection } from "@/components/home/events-section";
-import { HeroSection } from "@/components/home/hero-section";
-import { MethodSection } from "@/components/home/method-section";
-import { PastClientsSection } from "@/components/home/past-clients-section";
+import { ContactSection } from "@/components/home/contact/contact-section";
+import { EventsSection } from "@/components/home/sections/events-section";
+import { HeroSection } from "@/components/home/sections/hero-section";
+import { MethodSection } from "@/components/home/sections/method-section";
+import { PastClientsSection } from "@/components/home/sections/past-clients-section";
 
 export default function Home() {
     return (

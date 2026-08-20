@@ -7,7 +7,7 @@
     --color-paper: #faf8f5;
     --color-mist: #edf5fc;
     --color-wine: #6e0d1d;
-    --color-nav: #6799cf;
+    --color-nav: #3f70aa;
     --color-line: #c8d9eb;
     --color-focus: #d56b86;
     --font-display: "pritzious", cursive;
@@ -43,4 +43,20 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Google reCAPTCHA badge */
+.grecaptcha-badge {
+    visibility: hidden !important;
 }

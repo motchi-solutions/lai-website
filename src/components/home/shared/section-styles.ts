@@ -9,4 +9,4 @@ export const displayTitle =
 export const lede = "my-6 max-w-lg text-base leading-relaxed sm:text-lg lg:my-8";
 
 export const button =
-    "inline-flex min-h-14 cursor-pointer items-center justify-center rounded-2xl border-2 border-ink bg-ink px-5 py-3.5 text-white no-underline transition duration-200 hover:-translate-y-0.5 hover:bg-transparent hover:text-ink";
+    "inline-flex min-h-14 cursor-pointer items-center justify-center rounded-2xl border-2 border-ink bg-ink px-5 py-3.5 text-white no-underline transition duration-200 hover:-translate-y-0.5 hover:bg-transparent hover:text-ink motion-reduce:transition-none motion-reduce:hover:transform-none";
