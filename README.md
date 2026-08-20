@@ -1,4 +1,4 @@
-# Lai Catering
+# Lai Project
 
 A responsive, accessible beverage-catering website built with Next.js 16, React 19, and TypeScript. The contact form uses client and server validation, reCAPTCHA Enterprise policy-based challenges, durable rate limiting, and keyless Google Sheets access through Vercel OIDC.
 

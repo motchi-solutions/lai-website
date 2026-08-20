@@ -10,16 +10,16 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
     metadataBase: new URL(siteUrl),
     title: {
-        default: "Lai Catering | Tea, Matcha & Coffee Catering in the GTA",
-        template: "%s | Lai Catering",
+        default: "Lai Project | Tea, Matcha & Coffee Catering in the GTA",
+        template: "%s | Lai Project",
     },
     description:
-        "Planning an event in the GTA? Lai Catering creates fresh tea, matcha and coffee menus around your guests, theme and budget—so every cup feels considered.",
-    applicationName: "Lai Catering",
-    appleWebApp: { capable: true, title: "Lai Catering", statusBarStyle: "default" },
-    authors: [{ name: "Lai Catering" }],
-    creator: "Lai Catering",
-    publisher: "Lai Catering",
+        "Planning an event in the GTA? Lai Project creates fresh tea, matcha and coffee menus around your guests, theme and budget—so every cup feels considered.",
+    applicationName: "Lai Project",
+    appleWebApp: { capable: true, title: "Lai Project", statusBarStyle: "default" },
+    authors: [{ name: "Lai Project" }],
+    creator: "Lai Project",
+    publisher: "Lai Project",
     keywords: [
         "tea catering Toronto",
         "coffee catering Toronto",
@@ -34,14 +34,14 @@ export const metadata: Metadata = {
         type: "website",
         locale: "en_CA",
         url: "/",
-        siteName: "Lai Catering",
-        title: "Lai Catering | Tea, Matcha & Coffee Catering in the GTA",
+        siteName: "Lai Project",
+        title: "Lai Project | Tea, Matcha & Coffee Catering in the GTA",
         description:
             "Fresh, custom drink menus made around your guests, theme and budget for events across the GTA.",
     },
     twitter: {
         card: "summary_large_image",
-        title: "Lai Catering | Tea, Matcha & Coffee Catering in the GTA",
+        title: "Lai Project | Tea, Matcha & Coffee Catering in the GTA",
         description:
             "Fresh, custom drink menus made around your guests, theme and budget for events across the GTA.",
     },
@@ -59,7 +59,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     const structuredData = {
         "@context": "https://schema.org",
         "@type": "Organization",
-        name: "Lai Catering",
+        name: "Lai Project",
         url: siteUrl,
         logo: `${siteUrl}/brand/lai-logo.png`,
         image: `${siteUrl}/opengraph-image.png`,
@@ -80,7 +80,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             className="scroll-smooth scroll-pt-[calc(var(--header-height)+0.25rem)] motion-reduce:scroll-auto"
         >
             <head>
-                <meta name="apple-mobile-web-app-title" content="Lai Catering" />
+                <meta name="apple-mobile-web-app-title" content="Lai Project" />
                 <link rel="preconnect" href="https://use.typekit.net" crossOrigin="anonymous" />
                 <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
                 <link rel="stylesheet" href="https://use.typekit.net/ibr0irn.css" />
