@@ -7,7 +7,7 @@
     --wine: #6e0d1d;
     --font-display: "pritzious", cursive;
     --font-body: "asterisk-sans-variable", Arial, sans-serif;
-    --header-height: clamp(4.5rem, 5vw, 5.5rem);
+    --header-height: clamp(4.5rem, 6vw, 6rem);
 }
 * {
     box-sizing: border-box;
@@ -72,8 +72,8 @@ textarea {
 .wordmark {
     display: grid;
     place-items: center;
-    width: calc(var(--header-height) - 0.5rem);
-    height: calc(var(--header-height) - 0.5rem);
+    width: calc(var(--header-height) - 1rem);
+    height: calc(var(--header-height) - 1rem);
     padding: 4px;
     flex: 0 0 auto;
     text-decoration: none;
@@ -85,7 +85,7 @@ textarea {
 }
 .desktop-navigation {
     width: min(72vw, 1280px);
-    margin-top: 0.15rem;
+    margin-top: 0;
 }
 .desktop-navigation ul {
     display: flex;
@@ -152,7 +152,7 @@ textarea {
     overflow: hidden;
 }
 .section-inner {
-    width: min(100%, 1420px);
+    width: min(100%, 1440px);
     margin-inline: auto;
 }
 .hero-grid,
@@ -343,7 +343,7 @@ textarea {
 .contact-loop {
     position: absolute;
     z-index: 1;
-    left: max(1.25rem, calc((100vw - 1420px) / 2 + 4rem));
+    left: max(1.25rem, calc((100vw - 1440px) / 2 + 4rem));
     bottom: -1.5rem;
     width: min(40vw, 604px);
     height: auto;
@@ -439,32 +439,32 @@ footer p {
 
 @media (min-width: 1440px) {
     .hero {
-        align-items: start;
-        padding-top: clamp(4.5rem, 7vh, 6rem);
+        align-items: center;
+        padding-block: clamp(3rem, 5vh, 5rem);
     }
     .hero-grid {
-        width: min(100%, 1540px);
-        grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+        width: min(100%, 1440px);
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
         gap: clamp(3.5rem, 5vw, 6rem);
     }
     .hero-art {
-        min-height: min(48vw, 850px);
+        min-height: min(38vw, 660px);
     }
     .hero-photo {
-        left: 50%;
-        width: min(38vw, 720px);
+        left: 54%;
+        width: min(31vw, 580px);
         max-width: none;
         transform: translateX(-50%);
     }
     .hero-loop {
         left: 50%;
-        bottom: -16%;
-        width: 150%;
+        bottom: -4%;
+        width: 135%;
         max-width: none;
         transform: translateX(-50%);
     }
     .hero-copy .display-title {
-        font-size: clamp(10rem, 8.8vw, 11.5rem);
+        font-size: clamp(10.5rem, 9.2vw, 12rem);
         line-height: 0.94;
         word-spacing: 0.11em;
         white-space: nowrap;
