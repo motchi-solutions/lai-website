@@ -5,9 +5,13 @@ import { Redis } from "@upstash/redis";
 
 const isProduction = process.env.NODE_ENV === "production";
 const localAttempts = new Map<string, { count: number; reset: number }>();
-const redis = process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
-    ? new Redis({ url: process.env.UPSTASH_REDIS_REST_URL, token: process.env.UPSTASH_REDIS_REST_TOKEN })
-    : null;
+const redis =
+    process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
+        ? new Redis({
+              url: process.env.UPSTASH_REDIS_REST_URL,
+              token: process.env.UPSTASH_REDIS_REST_TOKEN,
+          })
+        : null;
 const limiter = redis
     ? new Ratelimit({
           redis,
@@ -23,9 +27,10 @@ export async function checkContactRateLimit(identifier: string) {
 
     const now = Date.now();
     const current = localAttempts.get(identifier);
-    const attempt = !current || current.reset <= now
-        ? { count: 1, reset: now + 900_000 }
-        : { count: current.count + 1, reset: current.reset };
+    const attempt =
+        !current || current.reset <= now
+            ? { count: 1, reset: now + 900_000 }
+            : { count: current.count + 1, reset: current.reset };
     localAttempts.set(identifier, attempt);
 
     return {
