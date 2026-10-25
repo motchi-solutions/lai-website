@@ -1,7 +1,11 @@
 import { z } from "zod";
 
 const cleanText = (max: number) =>
-    z.string().trim().max(max).transform((value) => value.replace(/\r\n/g, "\n"));
+    z
+        .string()
+        .trim()
+        .max(max)
+        .transform((value) => value.replace(/\r\n/g, "\n"));
 
 export const contactSchema = z.object({
     name: cleanText(100).pipe(z.string().min(2, "Please enter your full name.")),
