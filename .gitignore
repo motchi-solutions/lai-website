@@ -12,6 +12,10 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
 
 # next.js
 /.next/
@@ -19,11 +23,9 @@
 
 # production
 /build
-/deliverables/
 
 # misc
 .DS_Store
-*.pem
 
 # debug
 npm-debug.log*
@@ -31,9 +33,29 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# Environment files (only the placeholder example is tracked)
 .env*
+.env
+.env.*
 !.env.example
+
+# Common secret files
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.jks
+*.keystore
+secrets/
+.secret/
+.secrets/
+credentials/
+credentials.json
+service-account*.json
+*.p8
+.npmrc
 
 # vercel
 .vercel
@@ -41,3 +63,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# Personal local scripts (never committed)
+/scripts/local/
+
+# ---- Project-specific ----
+# Client deliverables kept outside Git
+/deliverables/
