@@ -84,7 +84,7 @@ Every Motchi website and client website uses the same platform pieces. This keep
 New website checklist:
 
 1. Create the repo with `main` and `develop`, and set the default branch to `develop`.
-2. Copy `AGENTS.md`, `CLAUDE.md`, `.claude/settings.json`, `.github/dependabot.yml`, `.github/workflows/ci.yml`, `scripts/`, `.agents/skills/` and `skills-lock.json` from an existing site. Write a new `CONTEXT.md`.
+2. Copy `AGENTS.md`, `CLAUDE.md`, `.gitignore`, `.claude/settings.json`, `.github/dependabot.yml`, `.github/workflows/ci.yml`, `scripts/`, `.agents/skills/` and `skills-lock.json` from an existing site. Write a new `CONTEXT.md` and a `.env.example` in motchi-website's format: every variable the code reads, placeholders only, and where each is set (local, Preview, Production).
 3. Import the repo into Vercel with the production branch set to `main`. Enable Web Analytics in the project's Analytics tab.
 4. Create a Turnstile widget in Cloudflare for the production and preview hostnames. Set the two Turnstile variables in Vercel.
 5. Add the privacy policy and the Motchi credit link.
