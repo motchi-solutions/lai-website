@@ -1,0 +1,47 @@
+{
+    "version": 1,
+    "skills": {
+        "apple-design": {
+            "source": "emilkowalski/skills",
+            "sourceType": "github",
+            "skillPath": "skills/apple-design/SKILL.md",
+            "computedHash": "0190417d092a0df447b000154e39733ea6d97efad6d3bec8a6ce3845aeb88914"
+        },
+        "design-systems-frontend-architecture": {
+            "source": "hueyexe/frontend-agent-skills",
+            "sourceType": "github",
+            "skillPath": "design-systems-frontend-architecture/SKILL.md",
+            "computedHash": "7c9efa94af5ab8c50bdfb92928eb038f8176c7f3f1c8a8f47770bfa7000e7198"
+        },
+        "frontend-design": {
+            "source": "anthropics/skills",
+            "sourceType": "github",
+            "skillPath": "skills/frontend-design/SKILL.md",
+            "computedHash": "89496d5dd00f4810205f351759594fc2742bf8eea85a2f2b2d1de59f4bd91576"
+        },
+        "hallmark": {
+            "source": "Nutlope/hallmark",
+            "sourceType": "github",
+            "skillPath": "skills/hallmark/SKILL.md",
+            "computedHash": "1465546d7971f57d428a0cbccfe0fa0426d1c309bec28ceefeb70e76f38c640e"
+        },
+        "untangle-codebase": {
+            "source": "caldoai/skills",
+            "sourceType": "github",
+            "skillPath": "skills/untangle-codebase/SKILL.md",
+            "computedHash": "d5e9e1c4a1f30f34c0120dea773d0170004d6c19ef5e8f236c35773bd6c5bdbc"
+        },
+        "ux-writing": {
+            "source": "content-designer/ux-writing-skill",
+            "sourceType": "github",
+            "skillPath": "SKILL.md",
+            "computedHash": "7a9be24c109c69070451aaa30f75417825cb6b85435c775ad58185c52449cbfc"
+        },
+        "web-design-guidelines": {
+            "source": "vercel-labs/agent-skills",
+            "sourceType": "github",
+            "skillPath": "skills/web-design-guidelines/SKILL.md",
+            "computedHash": "f3bc47f890f42a44db1007ab390709ec368e4b8c089baee6b0007182236ac474"
+        }
+    }
+}

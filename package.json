@@ -10,15 +10,18 @@
         "test": "vitest run",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
-        "typecheck": "next typegen && tsc --noEmit"
+        "typecheck": "next typegen && tsc --noEmit",
+        "dependencies:inventory": "node scripts/dependency-inventory.mjs",
+        "skills:inventory": "node scripts/skill-inventory.mjs"
     },
     "dependencies": {
         "@upstash/ratelimit": "^2.2.0",
         "@upstash/redis": "^1.39.0",
+        "@vercel/analytics": "2.0.1",
         "@vercel/oidc": "3.5.0",
         "googleapis": "^188.0.0",
         "hamburger-react": "^2.5.2",
-        "next": "16.4.3",
+        "next": "16.4.6",
         "react": "19.3.1",
         "react-dom": "19.3.1",
         "zod": "^4.6.7"
@@ -28,15 +31,15 @@
         "@types/node": "^24.19.2",
         "@types/react": "^19.3.0",
         "@types/react-dom": "^19.3.0",
+        "@typescript/native": "npm:typescript@^7.0.2",
         "babel-plugin-react-compiler": "1.0.0",
         "eslint": "^9.39.5",
-        "eslint-config-next": "16.4.3",
+        "eslint-config-next": "16.4.6",
         "postcss": "^8.5.31",
         "prettier": "^3.9.10",
         "tailwindcss": "^4.3.3",
         "typescript": "npm:@typescript/typescript6@^6.0.2",
-        "vitest": "^5.0.5",
-        "@typescript/native": "npm:typescript@^7.0.2"
+        "vitest": "^5.0.5"
     },
     "engines": {
         "node": ">=24.22.1 <27"

@@ -2,3 +2,9 @@ public/brand/
 public/images/
 public/icon.svg
 src/app/favicon.ico
+
+# Vendored agent skills
+.agents/
+# Generated trackers (rebuilt by scripts/)
+docs/DEPENDENCIES.md
+docs/SKILLS.md
