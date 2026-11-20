@@ -1,0 +1,46 @@
+# Dependabot: weekly grouped version updates into develop; develop is then
+# released to main separately. Security updates are enabled in repo settings
+# and open right away (cooldown does not delay them).
+version: 2
+
+updates:
+    - package-ecosystem: "npm"
+      directory: "/"
+      target-branch: "develop"
+      schedule:
+          interval: "weekly"
+          day: "monday"
+          time: "09:00"
+          timezone: "America/Toronto"
+      cooldown:
+          default-days: 3
+      open-pull-requests-limit: 5
+      groups:
+          next-and-react:
+              patterns:
+                  - "next"
+                  - "eslint-config-next"
+                  - "react"
+                  - "react-dom"
+                  - "@types/react"
+                  - "@types/react-dom"
+          npm-minor-patch:
+              update-types:
+                  - "minor"
+                  - "patch"
+
+    - package-ecosystem: "github-actions"
+      directory: "/"
+      target-branch: "develop"
+      schedule:
+          interval: "weekly"
+          day: "monday"
+          time: "09:15"
+          timezone: "America/Toronto"
+      cooldown:
+          default-days: 3
+      open-pull-requests-limit: 5
+      groups:
+          github-actions:
+              patterns:
+                  - "*"

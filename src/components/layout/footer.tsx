@@ -8,9 +8,9 @@ export function Footer() {
                 Website by{" "}
                 <a
                     className="underline decoration-white/50 underline-offset-4 transition hover:text-white"
-                    href="https://motchi.ca"
+                    href="https://www.motchi.ca/websites?utm_source=lai&utm_medium=referral&utm_campaign=client-footer"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener"
                 >
                     Motchi Websites
                 </a>

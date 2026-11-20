@@ -4,17 +4,17 @@ const scriptSources = [
     "'self'",
     "'unsafe-inline'",
     ...(process.env.NODE_ENV === "development" ? ["'unsafe-eval'"] : []),
-    "https://www.google.com/recaptcha/",
-    "https://www.gstatic.com/recaptcha/",
+    // Cloudflare Turnstile (contact form bot check).
+    "https://challenges.cloudflare.com",
 ];
 const contentSecurityPolicy = [
     "default-src 'self'",
     `script-src ${scriptSources.join(" ")}`,
-    "style-src 'self' 'unsafe-inline' https://use.typekit.net",
+    "style-src 'self' 'unsafe-inline' https://use.typekit.net https://p.typekit.net",
     "font-src 'self' data: https://use.typekit.net https://p.typekit.net",
-    "img-src 'self' data: blob: https://www.gstatic.com/recaptcha/",
-    "connect-src 'self' https://www.google.com/recaptcha/",
-    "frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/",
+    "img-src 'self' data: blob:",
+    "connect-src 'self'",
+    "frame-src https://challenges.cloudflare.com",
     "worker-src 'self' blob:",
     "object-src 'none'",
     "base-uri 'self'",

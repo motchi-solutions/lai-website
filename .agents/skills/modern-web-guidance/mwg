@@ -1,0 +1,18 @@
+#!/bin/sh
+# Motchi wrapper for the vendored modern-web-guidance 1.0.0 CLI (npm, Apache-2.0).
+# Runs the reviewed local copy offline with telemetry disabled.
+# Only the offline read commands are allowed. install, update and uninstall
+# spawn `npx -y skills ...` over the network; set-* commands write .mwgrc;
+# legacy-scan was not vendored.
+set -eu
+case "${1:-}" in
+  search|list|retrieve|--help|-h|--version|-v) ;;
+  *)
+    echo "mwg: only search, list and retrieve are allowed in this repository (see AGENTS.md)." >&2
+    exit 2
+    ;;
+esac
+DISABLE_TELEMETRY=1
+export DISABLE_TELEMETRY
+unset ENABLE_FILE_LOGGING MODERN_WEB_LOG_DIR DEBUG_MWG_TELEMETRY
+exec node "$(dirname "$0")/modern-web.mjs" "$@"
