@@ -3,6 +3,7 @@
 import { ChangeEvent, FocusEvent, FormEvent, useState } from "react";
 
 import { contactSchema, type ContactPayload } from "@/lib/contact-schema";
+import { useTurnstile } from "@/lib/use-turnstile";
 
 type FormField = "name" | "email" | "organization" | "details";
 type FieldErrors = Partial<Record<FormField, string>>;
@@ -19,55 +20,11 @@ type CaptchaResult = {
     referenceId?: string;
 };
 
-declare global {
-    interface Window {
-        grecaptcha?: {
-            enterprise?: {
-                ready: (callback: () => void) => void;
-                execute: (siteKey: string, options: { action: "contact" }) => Promise<string>;
-            };
-        };
-    }
-}
-
 const fields = ["name", "email", "organization", "details"] as const;
 const field = "relative";
 const label = "pointer-events-none absolute top-2 left-5 z-1 text-sm text-slate-600";
 const input =
     "w-full rounded-2xl border-2 border-ink bg-white/30 px-5 pt-7 pb-2 text-ink transition duration-200 placeholder:text-slate-400 focus:border-lai-blue focus:ring-4 focus:ring-lai-blue/10 focus:outline-none disabled:cursor-wait disabled:opacity-60";
-
-let captchaPromise: Promise<void> | null = null;
-
-function loadCaptcha(siteKey: string) {
-    if (window.grecaptcha?.enterprise) {
-        return new Promise<void>((resolve) => window.grecaptcha?.enterprise?.ready(resolve));
-    }
-    if (captchaPromise) return captchaPromise;
-
-    captchaPromise = new Promise<void>((resolve, reject) => {
-        const script = document.createElement("script");
-        script.src = `https://www.google.com/recaptcha/enterprise.js?render=${encodeURIComponent(siteKey)}`;
-        script.async = true;
-        script.defer = true;
-        script.dataset.recaptcha = "true";
-        script.onload = () => {
-            const enterprise = window.grecaptcha?.enterprise;
-            if (!enterprise) {
-                captchaPromise = null;
-                reject(new Error("CAPTCHA unavailable"));
-                return;
-            }
-            enterprise.ready(resolve);
-        };
-        script.onerror = () => {
-            captchaPromise = null;
-            reject(new Error("CAPTCHA failed to load"));
-        };
-        document.head.appendChild(script);
-    });
-
-    return captchaPromise;
-}
 
 function parseForm(form: HTMLFormElement) {
     return contactSchema.safeParse({
@@ -77,6 +34,9 @@ function parseForm(form: HTMLFormElement) {
 }
 
 export function ContactForm() {
+    const { container: turnstileContainer, getToken: getTurnstileToken } = useTurnstile(
+        process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+    );
     const [errors, setErrors] = useState<FieldErrors>({});
     const [status, setStatus] = useState<Status>({ type: "idle" });
     const [pending, setPending] = useState(false);
@@ -138,16 +98,6 @@ export function ContactForm() {
         updateFieldError(name, message);
     }
 
-    async function getCaptchaToken() {
-        const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-        if (!siteKey) throw new Error("CAPTCHA is not configured");
-
-        await loadCaptcha(siteKey);
-        const enterprise = window.grecaptcha?.enterprise;
-        if (!enterprise) throw new Error("CAPTCHA unavailable");
-        return enterprise.execute(siteKey, { action: "contact" });
-    }
-
     async function submit(payload: ContactPayload, captchaToken: string) {
         const response = await fetch("/api/contact", {
             method: "POST",
@@ -170,7 +120,7 @@ export function ContactForm() {
 
         setPending(true);
         try {
-            const captchaToken = await getCaptchaToken();
+            const captchaToken = await getTurnstileToken();
             const { response, result } = await submit(payload, captchaToken);
 
             if (!response.ok) {
@@ -333,16 +283,16 @@ export function ContactForm() {
             >
                 {pending ? "Sending your request…" : "Tell us about your event"}
             </button>
+            <div ref={turnstileContainer} />
             <p className="text-xs text-slate-600">
-                This site is protected by reCAPTCHA and the Google{" "}
-                <a className="underline" href="https://policies.google.com/privacy">
-                    Privacy Policy
-                </a>{" "}
-                and{" "}
-                <a className="underline" href="https://policies.google.com/terms">
-                    Terms of Service
-                </a>{" "}
-                apply.
+                This form uses Cloudflare Turnstile to block spam. See the{" "}
+                <a
+                    className="underline"
+                    href="https://www.cloudflare.com/turnstile-privacy-policy/"
+                >
+                    Turnstile privacy policy
+                </a>
+                .
             </p>
         </form>
     );

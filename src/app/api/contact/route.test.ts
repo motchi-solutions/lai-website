@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({
     appendContactSubmission: vi.fn(),
     checkContactRateLimit: vi.fn(async () => ({ success: true })),
-    verifyRecaptchaEnterprise: vi.fn(),
+    verifyTurnstile: vi.fn(),
 }));
 
 vi.mock("@/lib/google-integrations", () => ({
@@ -11,8 +11,9 @@ vi.mock("@/lib/google-integrations", () => ({
     FormResponseStorageError: class FormResponseStorageError extends Error {},
 }));
 vi.mock("@/lib/rate-limit", () => ({ checkContactRateLimit: mocks.checkContactRateLimit }));
-vi.mock("@/lib/recaptcha-enterprise", () => ({
-    verifyRecaptchaEnterprise: mocks.verifyRecaptchaEnterprise,
+vi.mock("@/lib/turnstile", () => ({
+    verifyTurnstile: mocks.verifyTurnstile,
+    requestHostname: (request: Request) => new URL(request.url).hostname,
 }));
 
 import { POST } from "./route";
@@ -41,37 +42,46 @@ describe("POST /api/contact", () => {
         mocks.appendContactSubmission.mockResolvedValue(undefined);
     });
 
-    it("does not verify reCAPTCHA or write invalid form data", async () => {
+    it("does not verify Turnstile or write invalid form data", async () => {
         const response = await POST(request({ ...validBody, details: "Too short" }));
 
         expect(response.status).toBe(400);
-        expect(mocks.verifyRecaptchaEnterprise).not.toHaveBeenCalled();
+        expect(mocks.verifyTurnstile).not.toHaveBeenCalled();
         expect(mocks.appendContactSubmission).not.toHaveBeenCalled();
     });
 
-    it("does not write when reCAPTCHA verification fails", async () => {
-        mocks.verifyRecaptchaEnterprise.mockResolvedValue({ valid: false });
+    it("does not write when Turnstile verification fails", async () => {
+        mocks.verifyTurnstile.mockResolvedValue({ ok: false, reason: "failed" });
 
         const response = await POST(request(validBody));
 
         expect(response.status).toBe(403);
-        expect(mocks.verifyRecaptchaEnterprise).toHaveBeenCalledTimes(1);
+        expect(mocks.verifyTurnstile).toHaveBeenCalledTimes(1);
         expect(mocks.appendContactSubmission).not.toHaveBeenCalled();
     });
 
-    it("writes exactly once after validation and reCAPTCHA succeed", async () => {
-        mocks.verifyRecaptchaEnterprise.mockResolvedValue({ valid: true });
+    it("writes exactly once after validation and Turnstile succeed", async () => {
+        mocks.verifyTurnstile.mockResolvedValue({ ok: true });
 
         const response = await POST(request(validBody));
 
         expect(response.status).toBe(201);
-        expect(mocks.verifyRecaptchaEnterprise).toHaveBeenCalledTimes(1);
+        expect(mocks.verifyTurnstile).toHaveBeenCalledTimes(1);
         expect(mocks.appendContactSubmission).toHaveBeenCalledOnce();
         expect(mocks.appendContactSubmission).toHaveBeenCalledWith(validBody);
     });
 
+    it("returns 503 without writing when Turnstile is unavailable", async () => {
+        mocks.verifyTurnstile.mockResolvedValue({ ok: false, reason: "unavailable" });
+
+        const response = await POST(request(validBody));
+
+        expect(response.status).toBe(503);
+        expect(mocks.appendContactSubmission).not.toHaveBeenCalled();
+    });
+
     it("returns a reportable code and reference when storage fails", async () => {
-        mocks.verifyRecaptchaEnterprise.mockResolvedValue({ valid: true });
+        mocks.verifyTurnstile.mockResolvedValue({ ok: true });
         mocks.appendContactSubmission.mockRejectedValue(new Error("Internal integration failure"));
 
         const response = await POST(request(validBody));

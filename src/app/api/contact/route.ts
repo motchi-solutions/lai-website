@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 import { contactSchema } from "@/lib/contact-schema";
 import { appendContactSubmission, FormResponseStorageError } from "@/lib/google-integrations";
 import { checkContactRateLimit } from "@/lib/rate-limit";
-import { verifyRecaptchaEnterprise } from "@/lib/recaptcha-enterprise";
+import { requestHostname, verifyTurnstile } from "@/lib/turnstile";
 
 export const runtime = "nodejs";
 const responseHeaders = { "Cache-Control": "no-store, max-age=0" };
@@ -64,13 +64,19 @@ export async function POST(request: Request) {
                 429,
             );
         }
-        const captcha = await verifyRecaptchaEnterprise({
+        const captcha = await verifyTurnstile({
             token: parsed.data.captchaToken,
-            userAgent: request.headers.get("user-agent") ?? undefined,
-            clientIp,
-            requestedUri: new URL(request.url).origin,
+            ip: clientIp,
+            hostname: requestHostname(request),
         });
-        if (!captcha.valid) {
+        if (!captcha.ok && captcha.reason === "unavailable") {
+            console.warn("Turnstile verification unavailable");
+            return json(
+                { message: "We could not send your request right now. Please try again shortly." },
+                503,
+            );
+        }
+        if (!captcha.ok) {
             return json({ message: "We couldn't verify your submission. Please try again." }, 403);
         }
         try {

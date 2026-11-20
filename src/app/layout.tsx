@@ -4,6 +4,8 @@ import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { ServiceWorkerRegistration } from "@/components/layout/service-worker-registration";
 import "./globals.css";
+import { SiteAnalytics } from "@/components/analytics/site-analytics";
+import { analyticsEnabled } from "@/lib/analytics";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -98,6 +100,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 </div>
                 <Footer />
                 <ServiceWorkerRegistration />
+                {analyticsEnabled() && <SiteAnalytics />}
             </body>
         </html>
     );
