@@ -54,8 +54,8 @@ GCP_PROJECT_NUMBER=123456789012
 GCP_SERVICE_ACCOUNT_EMAIL=service-account@project-id.iam.gserviceaccount.com
 GCP_WORKLOAD_IDENTITY_POOL_ID=vercel
 GCP_WORKLOAD_IDENTITY_POOL_PROVIDER_ID=vercel
-UPSTASH_REDIS_REST_URL=https://your-database.upstash.io
-UPSTASH_REDIS_REST_TOKEN=your_token
+KV_REST_API_URL=https://your-database.upstash.io
+KV_REST_API_TOKEN=your_token
 ```
 
 The Google variables above use keyless Vercel OIDC and Google Workload Identity Federation. There is no private-key fallback. Only the Turnstile site key is public; never give the Turnstile secret or the Google, GCP, or Upstash variables a `NEXT_PUBLIC_` prefix.
