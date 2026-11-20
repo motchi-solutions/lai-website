@@ -6,11 +6,11 @@ import { ServiceWorkerRegistration } from "@/components/layout/service-worker-re
 import "./globals.css";
 import { SiteAnalytics } from "@/components/analytics/site-analytics";
 import { analyticsEnabled } from "@/lib/analytics";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+import { JsonLd } from "@/components/seo/json-ld";
+import { indexingAllowed, site, siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-    metadataBase: new URL(siteUrl),
+    metadataBase: new URL(siteUrl()),
     title: {
         default: "Lai Project | Tea, Matcha & Coffee Catering in the GTA",
         template: "%s | Lai Project",
@@ -47,11 +47,18 @@ export const metadata: Metadata = {
         description:
             "Fresh, custom drink menus made around your guests, theme and budget for events across the GTA.",
     },
-    robots: {
-        index: true,
-        follow: true,
-        googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
-    },
+    robots: indexingAllowed()
+        ? {
+              index: true,
+              follow: true,
+              googleBot: {
+                  index: true,
+                  follow: true,
+                  "max-image-preview": "large",
+                  "max-snippet": -1,
+              },
+          }
+        : { index: false, follow: false },
     manifest: "/manifest.webmanifest",
 };
 
@@ -62,11 +69,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         "@context": "https://schema.org",
         "@type": "Organization",
         name: "Lai Project",
-        url: siteUrl,
-        logo: `${siteUrl}/brand/lai-logo.png`,
-        image: `${siteUrl}/opengraph-image.png`,
-        description:
-            "Fresh, custom tea, matcha, coffee and refresher menus for events across the Greater Toronto Area.",
+        url: site.url,
+        logo: `${site.url}/brand/lai-logo.png`,
+        image: `${site.url}/opengraph-image.png`,
+        description: site.description,
         areaServed: { "@type": "AdministrativeArea", name: "Greater Toronto Area" },
         knowsAbout: [
             "Tea catering",
@@ -88,12 +94,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 <link rel="stylesheet" href="https://use.typekit.net/ibr0irn.css" />
             </head>
             <body className="m-0 overflow-x-clip bg-paper font-body text-base leading-normal text-ink sm:text-lg [&_*:focus-visible]:outline-3 [&_*:focus-visible]:outline-focus [&_*:focus-visible]:outline-offset-4">
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
-                    }}
-                />
+                <JsonLd data={structuredData} />
                 <Navbar />
                 <div className="mx-auto min-h-[calc(100svh-var(--header-height))] w-full max-w-7xl">
                     {children}

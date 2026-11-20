@@ -46,7 +46,6 @@ npm run build
 Configure these values locally in `.env.local` and in the deployment environment. Never commit them.
 
 ```dotenv
-NEXT_PUBLIC_SITE_URL=https://your-production-domain.example
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=turnstile_site_key
 TURNSTILE_SECRET_KEY=turnstile_secret_key
 GCP_PROJECT_ID=google_cloud_project_id
@@ -69,7 +68,7 @@ The API first appends to the worksheet range `'Form Responses'!A:E`. If Google r
 - Share only the destination Sheet with that service account as Editor.
 - Configure an Upstash Redis database using its REST URL and REST token; no schema or migrations are required.
 - Keep `TURNSTILE_SECRET_KEY` server-only. Cloudflare's test keys work for local development.
-- Set `NEXT_PUBLIC_SITE_URL` to the canonical HTTPS production origin and redeploy after environment changes.
+- The canonical production origin, `https://www.laiproject.org`, is set in `src/lib/site.ts`. Search engines may index only Vercel Production; previews are noindex.
 
 The application includes file-based icons and social images, `robots.txt`, `sitemap.xml`, structured data, a web app manifest, an offline shell, security headers, request-size/origin checks, a honeypot, and safe server-side error handling.
 
@@ -78,7 +77,7 @@ The application includes file-based icons and social images, `robots.txt`, `site
 The site and contact form work fully on a stable `*.vercel.app` project domain before the custom domain is connected. For a client-testing deployment:
 
 - Add every required environment variable to the correct Vercel environment. Preview deployments require Preview-scoped variables; the stable production project domain uses Production-scoped variables.
-- Set `NEXT_PUBLIC_SITE_URL` to the exact temporary HTTPS hostname so canonical URLs, social metadata, the sitemap, and structured data agree. Replace it with the custom domain and redeploy at launch.
+- Canonical URLs, social metadata, the sitemap and structured data all come from `src/lib/site.ts`, so they always agree.
 - Add the exact temporary hostname to the Turnstile widget's hostname list in Cloudflare. Add the custom hostname before launch.
 - Authorize the matching Vercel OIDC subject in Google WIF. Preview deployments use a subject ending in `environment:preview`; production deployments use `environment:production`.
 - Use Vercel Deployment Protection when the review site should remain private. An unprotected deployment is publicly reachable and may be indexed.
@@ -93,7 +92,7 @@ Successful submissions and expected bot rejections are not logged. Unexpected Tu
 - Monthly: review Vercel function errors, Upstash usage/rate-limit activity, Turnstile analytics, and Google Cloud audit activity for unexpected changes. Do not export or retain customer data unnecessarily.
 - Before each release: run `npm test`, `npm run lint`, `npx tsc --noEmit`, `npm run build`, and review dependency/security update notices.
 - After integration changes: test the browser → `/api/contact` → Turnstile → rate limiter → Google Sheets flow in the affected Vercel environment.
-- After domain changes: update `NEXT_PUBLIC_SITE_URL`, Turnstile widget hostnames, and any external listings; redeploy and verify canonical, sitemap, Open Graph, and Twitter URLs.
+- After domain changes: update `site.url` in `src/lib/site.ts`, Turnstile widget hostnames, and any external listings; redeploy and verify canonical, sitemap, Open Graph, and Twitter URLs.
 - After PWA shell or icon changes: increment the cache name in `public/sw.js`, then verify install, update, and offline navigation in a production build.
 - When local OIDC expires: refresh `.env.development.local` with `npx vercel env pull .env.development.local --yes`, then restart the development server.
 - Quarterly: update dependencies deliberately, rotate the Turnstile secret and Upstash token when required by policy, remove obsolete Vercel deployments/environment variables, and recheck least-privilege access to the Sheet and service account.

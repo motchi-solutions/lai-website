@@ -1,14 +1,13 @@
 import type { MetadataRoute } from "next";
 
+import { absoluteUrl } from "@/lib/site";
+
+/** Public pages. Add new public routes here. */
+const publicRoutes = ["/"];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-    return [
-        {
-            url: siteUrl,
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 1,
-            images: [`${siteUrl}/opengraph-image.png`],
-        },
-    ];
+    return publicRoutes.map((path) => ({
+        url: absoluteUrl(path),
+        images: [absoluteUrl("/opengraph-image.png")],
+    }));
 }
