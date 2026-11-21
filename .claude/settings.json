@@ -68,5 +68,9 @@
             "Bash(node .claude/skills/unslop/scripts/snapshot.mjs*)",
             "Bash(node .claude/skills/unslop/scripts/story.mjs*)"
         ]
+    },
+    "attribution": {
+        "commit": "",
+        "pr": ""
     }
 }
