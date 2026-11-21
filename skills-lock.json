@@ -1,47 +1,77 @@
 {
-    "version": 1,
-    "skills": {
-        "apple-design": {
-            "source": "emilkowalski/skills",
-            "sourceType": "github",
-            "skillPath": "skills/apple-design/SKILL.md",
-            "computedHash": "0190417d092a0df447b000154e39733ea6d97efad6d3bec8a6ce3845aeb88914"
-        },
-        "design-systems-frontend-architecture": {
-            "source": "hueyexe/frontend-agent-skills",
-            "sourceType": "github",
-            "skillPath": "design-systems-frontend-architecture/SKILL.md",
-            "computedHash": "7c9efa94af5ab8c50bdfb92928eb038f8176c7f3f1c8a8f47770bfa7000e7198"
-        },
-        "frontend-design": {
-            "source": "anthropics/skills",
-            "sourceType": "github",
-            "skillPath": "skills/frontend-design/SKILL.md",
-            "computedHash": "89496d5dd00f4810205f351759594fc2742bf8eea85a2f2b2d1de59f4bd91576"
-        },
-        "hallmark": {
-            "source": "Nutlope/hallmark",
-            "sourceType": "github",
-            "skillPath": "skills/hallmark/SKILL.md",
-            "computedHash": "1465546d7971f57d428a0cbccfe0fa0426d1c309bec28ceefeb70e76f38c640e"
-        },
-        "untangle-codebase": {
-            "source": "caldoai/skills",
-            "sourceType": "github",
-            "skillPath": "skills/untangle-codebase/SKILL.md",
-            "computedHash": "d5e9e1c4a1f30f34c0120dea773d0170004d6c19ef5e8f236c35773bd6c5bdbc"
-        },
-        "ux-writing": {
-            "source": "content-designer/ux-writing-skill",
-            "sourceType": "github",
-            "skillPath": "SKILL.md",
-            "computedHash": "7a9be24c109c69070451aaa30f75417825cb6b85435c775ad58185c52449cbfc"
-        },
-        "web-design-guidelines": {
-            "source": "vercel-labs/agent-skills",
-            "sourceType": "github",
-            "skillPath": "skills/web-design-guidelines/SKILL.md",
-            "computedHash": "f3bc47f890f42a44db1007ab390709ec368e4b8c089baee6b0007182236ac474"
-        }
+  "version": 1,
+  "skills": {
+    "apple-design": {
+      "source": "emilkowalski/skills",
+      "sourceType": "github",
+      "skillPath": "skills/apple-design/SKILL.md",
+      "computedHash": "0190417d092a0df447b000154e39733ea6d97efad6d3bec8a6ce3845aeb88914"
+    },
+    "better-layout": {
+      "source": ".agents/skills/better-layout",
+      "sourceType": "local",
+      "skillPath": "SKILL.md",
+      "computedHash": "ab244e60af24104254b5f13bbd904f69c1e9f30e4e787eb11e535dddc8f33c3c"
+    },
+    "design-systems-frontend-architecture": {
+      "source": "hueyexe/frontend-agent-skills",
+      "sourceType": "github",
+      "skillPath": "design-systems-frontend-architecture/SKILL.md",
+      "computedHash": "7c9efa94af5ab8c50bdfb92928eb038f8176c7f3f1c8a8f47770bfa7000e7198"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "89496d5dd00f4810205f351759594fc2742bf8eea85a2f2b2d1de59f4bd91576"
+    },
+    "frontend-ui-engineering": {
+      "source": ".agents/skills/frontend-ui-engineering",
+      "sourceType": "local",
+      "skillPath": "SKILL.md",
+      "computedHash": "177f6e84ec6bc5bbc910b73575d6b4770612c847274d22ea6894fab938be6706"
+    },
+    "hallmark": {
+      "source": "Nutlope/hallmark",
+      "sourceType": "github",
+      "skillPath": "skills/hallmark/SKILL.md",
+      "computedHash": "1465546d7971f57d428a0cbccfe0fa0426d1c309bec28ceefeb70e76f38c640e"
+    },
+    "modern-web-guidance": {
+      "source": ".agents/skills/modern-web-guidance",
+      "sourceType": "local",
+      "skillPath": "SKILL.md",
+      "computedHash": "b01c47cbb682b87c97ad9ed7780a7d825303cc1c2f79bc33967fc1b98bef9020"
+    },
+    "security-audit": {
+      "source": ".agents/skills/security-audit",
+      "sourceType": "local",
+      "skillPath": "SKILL.md",
+      "computedHash": "91703e4985b49340b1b6c1e40db4975b9327e51e97dff3fefbcafb1a805a3338"
+    },
+    "unslop": {
+      "source": ".agents/skills/unslop",
+      "sourceType": "local",
+      "skillPath": "SKILL.md",
+      "computedHash": "d15bc47c91b7ed0d506ebab93d55f9a3ffc4d6e828ec24e1e3bfd1b35e9b6cc4"
+    },
+    "untangle-codebase": {
+      "source": "caldoai/skills",
+      "sourceType": "github",
+      "skillPath": "skills/untangle-codebase/SKILL.md",
+      "computedHash": "d5e9e1c4a1f30f34c0120dea773d0170004d6c19ef5e8f236c35773bd6c5bdbc"
+    },
+    "ux-writing": {
+      "source": "content-designer/ux-writing-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "7a9be24c109c69070451aaa30f75417825cb6b85435c775ad58185c52449cbfc"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "f3bc47f890f42a44db1007ab390709ec368e4b8c089baee6b0007182236ac474"
     }
+  }
 }
