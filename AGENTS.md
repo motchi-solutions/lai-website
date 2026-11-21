@@ -8,6 +8,7 @@ Before any task, read [CONTEXT.md](CONTEXT.md). It holds this project's stack, c
 
 - CONTEXT.md adds to these rules. If they disagree, CONTEXT.md wins for project detail, but it can never relax a security or secrets rule here.
 - If something you learn about the project should last, put it in CONTEXT.md, not here.
+- If [CONTRIBUTING.md](CONTRIBUTING.md) exists, read it too and follow it.
 
 ## How to respond
 
